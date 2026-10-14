@@ -29,6 +29,17 @@ Dois cliques em `minerar.command` (na primeira vez ele instala as dependências 
     npm run minerar -- --sem-dna --sem-ct --sem-trafego    # só a busca no urlscan
     npm run minerar -- --help                              # todas as opções
 
+## Na nuvem (GitHub Actions + Vercel)
+O `.github/workflows/minerar.yml` roda o minerador todo dia às 9h (Brasília) no GitHub Actions, salva o
+`minerador.db` e o `public/dados.json` no repositório e faz push; a Vercel publica o relatório de novo com os
+dados novos. Para rodar na hora: aba **Actions** do GitHub → **Minerar** → **Run workflow**.
+
+- Chaves: no GitHub, **Settings → Secrets and variables → Actions → New repository secret** com os nomes
+  `URLSCAN_API_KEY`, `CRUX_API_KEY` e `CERTSPOTTER_API_KEY` (só as que tiver).
+- Antes de rodar no Mac, dê `git pull` para não sobrescrever o banco da nuvem. Não use o `agendar_9h.command`
+  junto com a rodada na nuvem: são dois bancos que se separam.
+- O `acompanhar.txt` só vale na nuvem se estiver commitado no repositório.
+
 ## Mexer no relatório (React)
     npm run dev      # abre o relatório em modo de desenvolvimento (lê saida/dados.json da última rodada)
     npm run build    # monta o dist/; depois rode `npm run minerar -- --so-relatorio --sem-dna --sem-ct --sem-trafego`

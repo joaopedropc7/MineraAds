@@ -2,7 +2,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./relatorio.css";
 
-// No relatorio.html os dados vêm embutidos; no `npm run dev`, de saida/dados.json.
+// No relatorio.html os dados vêm embutidos; no `npm run dev`, de saida/dados.json; na Vercel,
+// de public/dados.json (gravado pela rodada automática do GitHub Actions).
 async function carregar() {
   const embutidos = JSON.parse(document.getElementById("dados").textContent);
   if (embutidos) return embutidos;

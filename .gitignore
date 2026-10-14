@@ -1,5 +1,5 @@
 .env
-minerador.db
 saida/
 cache/
 node_modules/
+dist/dados.json
