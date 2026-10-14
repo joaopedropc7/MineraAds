@@ -1,0 +1,50 @@
+MINERADOR DE OFERTAS (VERSÃO REACT) - COMO INSTALAR NO MAC
+==========================================================
+
+1) INSTALAR O NODE.JS (uma vez só)
+   - Baixe a versão LTS em https://nodejs.org (22.13 ou mais nova) e instale.
+   - Já tem Node pelo Homebrew? Serve também, desde que seja 22.13 ou mais novo
+     (confira no Terminal com: node --version).
+
+2) COLOCAR O MINERADOR NO MAC
+   - Arraste a pasta "minerador_react" para a sua pasta de usuário
+     (a pasta com o ícone de casinha, no Finder: menu Ir > Início).
+   - Não deixe em Documentos, Mesa, Downloads ou iCloud: o macOS bloqueia a rodada
+     automática das 9h nessas pastas.
+   - Já usava a versão em Python? Copie o arquivo minerador.db (e o acompanhar.txt e o
+     .env, se tiver) da pasta minerador_urlscan para esta. O histórico continua.
+
+3) RODAR
+   - Dois cliques em "minerar.command".
+   - Na primeira vez o macOS pode dizer que não pode abrir porque o desenvolvedor não é
+     identificado. Nesse caso: clique com o botão direito (ou Control + clique) no arquivo
+     > Abrir > Abrir. Só precisa fazer isso uma vez para cada arquivo .command.
+     (Em versões novas do macOS: Ajustes do Sistema > Privacidade e Segurança >
+     "Abrir Mesmo Assim".)
+   - Atalho para liberar todos os arquivos de uma vez: abra o Terminal e rode
+         xattr -dr com.apple.quarantine ~/minerador_react
+   - Na primeira vez ele instala as dependências (precisa de internet, ~1 min).
+   - A primeira rodada leva alguns minutos: busca as ofertas dos últimos 7 dias e
+     analisa cada landing. No fim, o relatório abre sozinho no navegador.
+   - O relatório fica em saida/relatorio.html.
+
+4) (OPCIONAL) RODAR SOZINHO TODO DIA ÀS 9H
+   - Dois cliques em "agendar_9h.command".
+   - Se o Mac estiver dormindo às 9h, a rodada acontece assim que ele acordar.
+   - A saída da rodada automática fica em saida/ultimo_log.txt.
+   - Para desligar: dois cliques em "remover_agendamento.command".
+   - Se você também tinha agendado a versão em Python, desligue a dela
+     (remover_agendamento.command da pasta minerador_urlscan) para não rodar duas vezes.
+
+5) COPIAR PARA O CLAUDE
+   - Dois cliques em "copiar_para_claude.command" copia o resumo das ofertas.
+     Depois é só colar no Claude com Cmd+V.
+
+6) (OPCIONAL) CHAVES GRÁTIS
+   Funciona sem nenhuma chave. Para liberar mais coisas (o passo a passo de cada
+   chave está no LEIA-ME.md):
+   - Abra o Terminal, digite cd e um espaço, arraste a pasta minerador_react para
+     dentro da janela do Terminal e aperte Enter.
+   - Digite:  cp .env.example .env && open -e .env
+   - Cole as chaves nas linhas URLSCAN_API_KEY= e/ou CRUX_API_KEY= e salve.
+   Nunca mande essas chaves para ninguém.
